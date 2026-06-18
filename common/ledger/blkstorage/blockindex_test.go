@@ -159,7 +159,7 @@ func testBlockIndexSelectiveIndexing(t *testing.T, indexItems []IndexableAttr) {
 			require.EqualError(t, err, "transaction IDs not maintained in index")
 		}
 
-		// test 'retrieveTrasnactionsByBlockNumTranNum
+		// test 'retrieveTransactionsByBlockNumTranNum
 		txEnvelope2, err := blockfileMgr.retrieveTransactionByBlockNumTranNum(0, 0)
 		if containsAttr(indexItems, IndexableAttrBlockNumTranNum) {
 			require.NoError(t, err, "Error while retrieving tx by blockNum and tranNum")

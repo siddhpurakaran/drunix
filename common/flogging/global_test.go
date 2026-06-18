@@ -112,7 +112,7 @@ func TestGlobalMustGetLogger(t *testing.T) {
 	require.NotNil(t, l)
 }
 
-func TestFlogginInitPanic(t *testing.T) {
+func TestFloggingInitPanic(t *testing.T) {
 	defer flogging.Reset()
 
 	require.Panics(t, func() {

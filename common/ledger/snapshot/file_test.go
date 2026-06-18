@@ -33,10 +33,9 @@ func TestFileCreateAndRead(t *testing.T) {
 	fileCreator, err := CreateFile(path.Join(testDir, "dataFile"), byte(5), testNewHashFunc)
 	require.NoError(t, err)
 	defer fileCreator.Close()
-
 	require.NoError(t, fileCreator.EncodeString("Hi there"))
 	require.NoError(t, fileCreator.EncodeString("How are you?"))
-	require.NoError(t, fileCreator.EncodeString("")) // zreo length string
+	require.NoError(t, fileCreator.EncodeString("")) // zero length string
 	require.NoError(t, fileCreator.EncodeUVarint(uint64(25)))
 	require.NoError(t, fileCreator.EncodeProtoMessage(
 		&common.BlockchainInfo{
@@ -46,7 +45,7 @@ func TestFileCreateAndRead(t *testing.T) {
 		},
 	))
 	require.NoError(t, fileCreator.EncodeBytes([]byte("some junk bytes")))
-	require.NoError(t, fileCreator.EncodeBytes([]byte{})) // zreo length slice
+	require.NoError(t, fileCreator.EncodeBytes([]byte{})) // zero length slice
 
 	// Done and verify the returned hash
 	dataHash, err := fileCreator.Done()
@@ -170,7 +169,7 @@ func TestFileReaderErrorPropagation(t *testing.T) {
 	testPath := testPath(t)
 	defer os.RemoveAll(testPath)
 
-	// non-existent-file cuases an error
+	// non-existent-file causes an error
 	nonExistentFile := path.Join(testPath, "non-existent-file")
 	_, err := OpenFile(nonExistentFile, byte(1))
 	require.Contains(t, err.Error(), "error while opening the snapshot file: "+nonExistentFile)

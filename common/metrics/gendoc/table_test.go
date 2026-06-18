@@ -19,7 +19,7 @@ import (
 )
 
 var _ = Describe("Table", func() {
-	It("generates a markdown document the prometheus metrics", func() {
+	It("generates a markdown document for the prometheus metrics", func() {
 		var options []interface{}
 
 		filepath.Walk("testdata", func(path string, info os.FileInfo, err error) error {
@@ -44,7 +44,7 @@ var _ = Describe("Table", func() {
 		Expect(buf.String()).To(Equal(strings.TrimPrefix(goldenPromTable, "\n")))
 	})
 
-	It("generates a markdown document the statsd metrics", func() {
+	It("generates a markdown document for the statsd metrics", func() {
 		var options []interface{}
 
 		filepath.Walk("testdata", func(path string, info os.FileInfo, err error) error {

@@ -374,7 +374,7 @@ func TestBootstrapFromSnapshotErrorPaths(t *testing.T) {
 		require.Contains(t, err.Error(), "error while opening the snapshot file: "+metadataFile)
 	})
 
-	t.Run("bootstapping-more-than-once", func(t *testing.T) {
+	t.Run("bootstrapping-more-than-once", func(t *testing.T) {
 		cleanupDirs()
 		env.provider.ImportFromSnapshot(ledgerID, snapshotDir, snapshotInfo)
 		err := env.provider.ImportFromSnapshot(ledgerID, snapshotDir, snapshotInfo)
@@ -417,7 +417,7 @@ func TestBootstrapFromSnapshotErrorPaths(t *testing.T) {
 		require.Contains(t, err.Error(), "error writing batch to leveldb")
 	})
 
-	t.Run("bootstrappedsnapshotInfo-file-corrupt", func(t *testing.T) {
+	t.Run("bootstrapped-snapshot-info-file-corrupt", func(t *testing.T) {
 		cleanupDirs()
 		createSnapshotMetadataFile(1)
 		createSnapshotDataFile("single-tx-id")

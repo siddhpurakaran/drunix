@@ -38,7 +38,7 @@ func newTreePermutation(root *TreeVertex, combinationUpperBound int) *treePermut
 	}
 }
 
-// permute returns Trees that their vertices and edges all exist in the original tree who's vertex
+// permute returns Trees whose vertices and edges all exist in the original tree whose vertex
 // is the 'originalRoot' field of the treePermutations
 func (tp *treePermutations) permute() []*Tree {
 	tp.computeDescendantPermutations()
@@ -55,7 +55,7 @@ func (tp *treePermutations) permute() []*Tree {
 		}
 
 		// Iterate over all permutations where v exists
-		// and separate them to 2 sets: a indiceSet where it exists and a indiceSet where it doesn't
+		// and separate them to 2 sets: an indiceSet where it exists and an indiceSet where it doesn't
 		var permutationsWhereVexists []*TreeVertex
 		var permutationsWhereVdoesntExist []*TreeVertex
 		for _, perm := range tp.permutations {
@@ -111,7 +111,7 @@ func (tp *treePermutations) computeDescendantPermutations() {
 			continue
 		}
 
-		// Ensure we don't have too much combinations of descendants
+		// Ensure we don't have too many combinations of descendants
 		for CombinationsExceed(len(v.Descendants), v.Threshold, tp.combinationUpperBound) {
 			// Randomly pick a descendant, and remove it
 			victim := r.IntN(len(v.Descendants))

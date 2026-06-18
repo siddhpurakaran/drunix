@@ -151,7 +151,7 @@ func (p *BlockStoreProvider) Close() {
 }
 
 func dataFormatVersion(indexConfig *IndexConfig) string {
-	// in version 2.0 we merged three indexable into one `IndexableAttrTxID`
+	// in version 2.0 we merged three indexable attributes into one `IndexableAttrTxID`
 	if indexConfig.Contains(IndexableAttrTxID) {
 		return dataformat.CurrentFormat
 	}

@@ -151,7 +151,7 @@ func testutilConstructMetricProvider() *testMetricProvider {
 
 func testutilConstructGauge() *metricsfakes.Gauge {
 	fakeGauge := &metricsfakes.Gauge{}
-	fakeGauge.WithStub = func(lableValues ...string) metrics.Gauge {
+	fakeGauge.WithStub = func(labelValues ...string) metrics.Gauge {
 		return fakeGauge
 	}
 	return fakeGauge
@@ -159,7 +159,7 @@ func testutilConstructGauge() *metricsfakes.Gauge {
 
 func testutilConstructHist() *metricsfakes.Histogram {
 	fakeHist := &metricsfakes.Histogram{}
-	fakeHist.WithStub = func(lableValues ...string) metrics.Histogram {
+	fakeHist.WithStub = func(labelValues ...string) metrics.Histogram {
 		return fakeHist
 	}
 	return fakeHist

@@ -40,7 +40,7 @@ var _ = Describe("Collector", func() {
 		collector = goruntime.NewCollector(fakeProvider)
 	})
 
-	It("constructs a collector with the approriate gauges", func() {
+	It("constructs a collector with the appropriate gauges", func() {
 		Expect(fakeProvider.NewGaugeCallCount()).To(Equal(27))
 	})
 
@@ -115,7 +115,7 @@ var _ = Describe("Collector", func() {
 			Expect(fakeGauges["go.mem.heap_total_alloc_bytes"].SetArgsForCall(0)).To(Equal(float64(5)))
 		})
 
-		It("publishes Mallocs as go.mem.heap.heap_malloc_count", func() {
+		It("publishes Mallocs as go.mem.heap_malloc_count", func() {
 			stats.MemStats.Mallocs = 6
 			collector.Publish(stats)
 
@@ -142,7 +142,7 @@ var _ = Describe("Collector", func() {
 			Expect(fakeGauges["go.mem.heap_sys_bytes"].SetArgsForCall(0)).To(Equal(float64(8)))
 		})
 
-		It("publishes HeapSys as go.mem.heap_idle_bytes", func() {
+		It("publishes HeapIdle as go.mem.heap_idle_bytes", func() {
 			stats.MemStats.HeapIdle = 9
 			collector.Publish(stats)
 
@@ -223,7 +223,7 @@ var _ = Describe("Collector", func() {
 			Expect(fakeGauges["go.mem.mcache_inuse_bytes"].SetArgsForCall(0)).To(Equal(float64(17)))
 		})
 
-		It("publishes MCacheInuse as go.mem.mcache_sys_bytes", func() {
+		It("publishes MCacheSys as go.mem.mcache_sys_bytes", func() {
 			stats.MemStats.MCacheSys = 18
 			collector.Publish(stats)
 
@@ -268,7 +268,7 @@ var _ = Describe("Collector", func() {
 			Expect(fakeGauges["go.mem.gc_next_bytes"].SetArgsForCall(0)).To(Equal(float64(22)))
 		})
 
-		It("publishes LastGC as go.mem.gc.last_epoch_nanotime", func() {
+		It("publishes LastGC as go.mem.gc_last_epoch_nanotime", func() {
 			stats.MemStats.LastGC = 23
 			collector.Publish(stats)
 

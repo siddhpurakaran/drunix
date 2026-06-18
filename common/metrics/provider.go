@@ -31,7 +31,7 @@ type Counter interface {
 // metrics subsystem.
 type CounterOpts struct {
 	// Namespace, Subsystem, and Name are components of the fully-qualified name
-	// of the Metric. The fully-qualified aneme is created by joining these
+	// of the Metric. The fully-qualified name is created by joining these
 	// components with an appropriate separator. Only Name is mandatory, the
 	// others merely help structuring the name.
 	Namespace string
@@ -82,7 +82,7 @@ type Gauge interface {
 // metrics subsystem.
 type GaugeOpts struct {
 	// Namespace, Subsystem, and Name are components of the fully-qualified name
-	// of the Metric. The fully-qualified aneme is created by joining these
+	// of the Metric. The fully-qualified name is created by joining these
 	// components with an appropriate separator. Only Name is mandatory, the
 	// others merely help structuring the name.
 	Namespace string
@@ -130,7 +130,7 @@ type Histogram interface {
 // metrics subsystem.
 type HistogramOpts struct {
 	// Namespace, Subsystem, and Name are components of the fully-qualified name
-	// of the Metric. The fully-qualified aneme is created by joining these
+	// of the Metric. The fully-qualified name is created by joining these
 	// components with an appropriate separator. Only Name is mandatory, the
 	// others merely help structuring the name.
 	Namespace string

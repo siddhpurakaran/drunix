@@ -84,9 +84,9 @@ func TestResetBlockStore(t *testing.T) {
 	os.RemoveAll(blockStoreRootDir)
 	blocks1 := testutil.ConstructTestBlocks(t, 20) // 20 blocks persisted in ~5 block files
 	blocks2 := testutil.ConstructTestBlocks(t, 40) // 40 blocks persisted in ~5 block files
-	maxFileSie := int(0.2 * float64(testutilEstimateTotalSizeOnDisk(t, blocks1)))
+	maxFileSize := int(0.2 * float64(testutilEstimateTotalSizeOnDisk(t, blocks1)))
 
-	env := newTestEnv(t, NewConf(blockStoreRootDir, maxFileSie))
+	env := newTestEnv(t, NewConf(blockStoreRootDir, maxFileSize))
 	defer env.Cleanup()
 	provider := env.provider
 	store1, err := provider.Open("ledger1")
@@ -118,7 +118,7 @@ func TestResetBlockStore(t *testing.T) {
 		h,
 	)
 
-	env = newTestEnv(t, NewConf(blockStoreRootDir, maxFileSie))
+	env = newTestEnv(t, NewConf(blockStoreRootDir, maxFileSize))
 	provider = env.provider
 	store1, _ = provider.Open("ledger1")
 	store2, _ = provider.Open("ledger2")

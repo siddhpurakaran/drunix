@@ -113,7 +113,7 @@ func TestDifferentChannelID(t *testing.T) {
 
 	_, err = vi.ProposeConfigUpdate(newConfig)
 	if err == nil {
-		t.Error("Should have errored when proposing a new config set the wrong channel ID")
+		t.Error("Should have errored when proposing a new config set with the wrong channel ID")
 	}
 }
 

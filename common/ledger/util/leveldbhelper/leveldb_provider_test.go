@@ -463,7 +463,7 @@ func TestRetrieveDataFormatInfo(t *testing.T) {
 		require.NoError(t, err)
 		require.Equal(t,
 			&DataFormatInfo{
-				FormatVerison: "",
+				FormatVersion: "",
 				IsDBEmpty:     true,
 			},
 			info,
@@ -482,7 +482,7 @@ func TestRetrieveDataFormatInfo(t *testing.T) {
 		require.NoError(t, err)
 		require.Equal(t,
 			&DataFormatInfo{
-				FormatVerison: "",
+				FormatVersion: "",
 				IsDBEmpty:     false,
 			},
 			info,
@@ -501,7 +501,7 @@ func TestRetrieveDataFormatInfo(t *testing.T) {
 		require.NoError(t, err)
 		require.Equal(t,
 			&DataFormatInfo{
-				FormatVerison: "2.6",
+				FormatVersion: "2.6",
 				IsDBEmpty:     false,
 			},
 			info,

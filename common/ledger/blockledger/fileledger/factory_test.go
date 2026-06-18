@@ -54,7 +54,7 @@ func TestBlockStoreProviderErrors(t *testing.T) {
 		mockBlockStoreProvider.OpenReturns(nil, errors.New("woogie"))
 		_, err := f.GetOrCreate("foo")
 		require.EqualError(t, err, "woogie")
-		require.Empty(t, f.ledgers, "Expected no new ledger is created")
+		require.Empty(t, f.ledgers, "Expected no new ledger to be created")
 	})
 
 	t.Run("remove", func(t *testing.T) {
@@ -213,7 +213,7 @@ func TestRemove(t *testing.T) {
 		})
 		err = f.Remove("foo")
 		require.NoError(t, err, "Error removing channel")
-		require.Equal(t, 1, mockBlockStore.DropCallCount(), "Expected 1 Drop() calls")
+		require.Equal(t, 1, mockBlockStore.DropCallCount(), "Expected 1 Drop() call")
 
 		_, err = os.Stat(dest)
 		require.EqualError(t, err, fmt.Sprintf("stat %s: no such file or directory", dest))

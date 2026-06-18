@@ -173,7 +173,7 @@ func (dbInst *DB) WriteBatch(batch *leveldb.Batch, sync bool) error {
 	return nil
 }
 
-// FileLock encapsulate the DB that holds the file lock.
+// FileLock encapsulates the DB that holds the file lock.
 // As the FileLock to be used by a single process/goroutine,
 // there is no need for the semaphore to synchronize the
 // FileLock usage.
@@ -189,7 +189,7 @@ func NewFileLock(filePath string) *FileLock {
 	}
 }
 
-// Lock acquire a file lock. We achieve this by opening
+// Lock acquires a file lock. We achieve this by opening
 // a db for the given filePath. Internally, leveldb acquires a
 // file lock while opening a db. If the db is opened again by the same or
 // another process, error would be returned. When the db is closed
@@ -225,7 +225,7 @@ func (f *FileLock) IsLocked() bool {
 }
 
 // Unlock releases a previously acquired lock. We achieve this by closing
-// the previously opened db. FileUnlock can be called multiple times.
+// the previously opened db. Unlock can be called multiple times.
 func (f *FileLock) Unlock() {
 	if f.db == nil {
 		return

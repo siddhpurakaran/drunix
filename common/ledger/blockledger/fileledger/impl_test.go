@@ -135,7 +135,7 @@ func TestInitialization(t *testing.T) {
 
 	block := blockledger.GetBlock(fl, 0)
 	require.NotNil(t, block, "Error retrieving genesis block")
-	require.Equal(t, protoutil.BlockHeaderHash(genesisBlock.Header), protoutil.BlockHeaderHash(block.Header), "Block hashes did no match")
+	require.Equal(t, protoutil.BlockHeaderHash(genesisBlock.Header), protoutil.BlockHeaderHash(block.Header), "Block hashes did not match")
 }
 
 func TestReinitialization(t *testing.T) {
@@ -152,8 +152,8 @@ func TestReinitialization(t *testing.T) {
 	fl, err := tev.flf.GetOrCreate("testchannelid")
 	ledger1, ok := fl.(*FileLedger)
 	require.NoError(t, err, "Expected to successfully get test channel")
-	require.Equal(t, 1, len(tev.flf.ChannelIDs()), "Exptected not new channel to be created")
-	require.True(t, ok, "Exptected type assertion to succeed")
+	require.Equal(t, 1, len(tev.flf.ChannelIDs()), "Expected no new channel to be created")
+	require.True(t, ok, "Expected type assertion to succeed")
 	require.Equal(t, uint64(2), ledger1.Height(), "Block height should be 2. Got %v", ledger1.Height())
 
 	// shut down the ledger provider
@@ -176,7 +176,7 @@ func TestReinitialization(t *testing.T) {
 
 	block := blockledger.GetBlock(fl, 1)
 	require.NotNil(t, block, "Error retrieving block 1")
-	require.Equal(t, protoutil.BlockHeaderHash(b1.Header), protoutil.BlockHeaderHash(block.Header), "Block hashes did no match")
+	require.Equal(t, protoutil.BlockHeaderHash(b1.Header), protoutil.BlockHeaderHash(block.Header), "Block hashes did not match")
 }
 
 func TestAddition(t *testing.T) {
@@ -191,7 +191,7 @@ func TestAddition(t *testing.T) {
 
 	block := blockledger.GetBlock(fl, 1)
 	require.NotNil(t, block, "Error retrieving genesis block")
-	require.Equal(t, prevHash, block.Header.PreviousHash, "Block hashes did no match")
+	require.Equal(t, prevHash, block.Header.PreviousHash, "Block hashes did not match")
 }
 
 func TestRetrieval(t *testing.T) {

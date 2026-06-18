@@ -28,7 +28,7 @@ func TestWrongBlockNumber(t *testing.T) {
 		require.NoError(t, err)
 	}
 	err := store.AddBlock(blocks[4])
-	require.Error(t, err, "Error shold have been thrown when adding block number 4 while block number 3 is expected")
+	require.Error(t, err, "Error should have been thrown when adding block number 4 while block number 3 is expected")
 }
 
 func TestTxIDIndexErrorPropagations(t *testing.T) {

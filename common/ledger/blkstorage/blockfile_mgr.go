@@ -155,7 +155,7 @@ func newBlockfileMgr(id string, conf *Conf, indexConfig *IndexConfig, indexStore
 	if !blockfilesInfo.noBlockFiles {
 		lastBlockHeader, err := mgr.retrieveBlockHeaderByNumber(blockfilesInfo.lastPersistedBlock)
 		if err != nil {
-			panic(fmt.Sprintf("Could not retrieve header of the last block form file: %s", err))
+			panic(fmt.Sprintf("Could not retrieve header of the last block from file: %s", err))
 		}
 		// update bcInfo with lastPersistedBlock
 		bcInfo.Height = blockfilesInfo.lastPersistedBlock + 1
@@ -345,7 +345,7 @@ func (mgr *blockfileMgr) addBlock(block *common.Block) error {
 		return errors.WithMessage(err, "error saving blockfiles file info to db")
 	}
 
-	// Index block file location pointer updated with file suffex and offset for the new block
+	// Index block file location pointer updated with file suffix and offset for the new block
 	blockFLP := &fileLocPointer{fileSuffixNum: newBlkfilesInfo.latestFileNumber}
 	blockFLP.offset = currentOffset
 	// shift the txoffset because we prepend length of bytes before block bytes

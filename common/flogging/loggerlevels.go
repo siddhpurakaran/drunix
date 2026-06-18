@@ -96,7 +96,7 @@ func (l *LoggerLevels) ActivateSpec(spec string) error {
 	return nil
 }
 
-// logggerNameRegexp defines the valid logger names
+// loggerNameRegexp defines the valid logger names
 var loggerNameRegexp = regexp.MustCompile(`^[[:alnum:]_#:-]+(\.[[:alnum:]_#:-]+)*$`)
 
 // isValidLoggerName checks whether a logger name contains only valid

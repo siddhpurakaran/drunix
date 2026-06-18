@@ -142,12 +142,12 @@ var _ = Describe("Provider", func() {
 				Namespace:  "peer",
 				Subsystem:  "playground",
 				Name:       "histogram_name",
-				Help:       "This is some help text for the gauge",
+				Help:       "This is some help text for the histogram",
 				LabelNames: []string{"alpha", "beta"},
 			}
 		})
 
-		It("creates histogram that support labels", func() {
+		It("creates a histogram that supports labels", func() {
 			histogram := p.NewHistogram(histogramOpts)
 			for _, limit := range prom.DefBuckets {
 				histogram.With("alpha", "a", "beta", "b").Observe(limit)
@@ -160,7 +160,7 @@ var _ = Describe("Provider", func() {
 
 			bytes, err := ioutil.ReadAll(resp.Body)
 			Expect(err).NotTo(HaveOccurred())
-			Expect(string(bytes)).To(ContainSubstring(`# HELP peer_playground_histogram_name This is some help text for the gauge`))
+			Expect(string(bytes)).To(ContainSubstring(`# HELP peer_playground_histogram_name This is some help text for the histogram`))
 			Expect(string(bytes)).To(ContainSubstring(`# TYPE peer_playground_histogram_name histogram`))
 			Expect(string(bytes)).To(ContainSubstring(`peer_playground_histogram_name_bucket{alpha="a",beta="b",le="0.005"} 1`))
 			Expect(string(bytes)).To(ContainSubstring(`peer_playground_histogram_name_bucket{alpha="a",beta="b",le="0.01"} 2`))
@@ -191,7 +191,7 @@ var _ = Describe("Provider", func() {
 
 			bytes, err := ioutil.ReadAll(resp.Body)
 			Expect(err).NotTo(HaveOccurred())
-			Expect(string(bytes)).To(ContainSubstring(`# HELP peer_playground_histogram_name This is some help text for the gauge`))
+			Expect(string(bytes)).To(ContainSubstring(`# HELP peer_playground_histogram_name This is some help text for the histogram`))
 			Expect(string(bytes)).To(ContainSubstring(`# TYPE peer_playground_histogram_name histogram`))
 			Expect(string(bytes)).To(ContainSubstring(`peer_playground_histogram_name_bucket{alpha="a",beta="b",le="1"} 1`))
 			Expect(string(bytes)).To(ContainSubstring(`peer_playground_histogram_name_bucket{alpha="a",beta="b",le="5"} 2`))
@@ -201,7 +201,7 @@ var _ = Describe("Provider", func() {
 	})
 
 	// This helps ensure the label cardinality behavior matches what was implemented
-	// for statsd. If these tests fail, correspending updates will be needed in the label
+	// for statsd. If these tests fail, corresponding updates will be needed in the label
 	// processing used for statsd.
 	Describe("edge case behavior", func() {
 		var counterOpts commonmetrics.CounterOpts
@@ -244,7 +244,7 @@ var _ = Describe("Provider", func() {
 		})
 
 		Context("when label values are not provided", func() {
-			It("it panics with a cardinaility message", func() {
+			It("it panics with a cardinality message", func() {
 				counter := p.NewCounter(counterOpts)
 				panicMessage := func() (panicMessage interface{}) {
 					defer func() { panicMessage = recover() }()

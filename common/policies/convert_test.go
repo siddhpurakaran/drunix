@@ -861,7 +861,7 @@ func (i *inconvertiblePolicy) EvaluateIdentities(signatureSet []msp.Identity) er
 
 func TestImplicitMetaPolicy_Convert7(t *testing.T) {
 	// Scenario: we attempt the conversion of a metapolicy
-	// with an incovertible subpolicy
+	// with an inconvertible subpolicy
 
 	p := &policies.ImplicitMetaPolicy{
 		Threshold:     2,

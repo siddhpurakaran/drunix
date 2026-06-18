@@ -112,7 +112,7 @@ func (r *rollbackMgr) rollbackBlockIndex() error {
 func (r *rollbackMgr) deleteIndexEntriesRange(startBlkNum, endBlkNum uint64) error {
 	// TODO: when more than half of the blocks' indices are to be deleted, it
 	// might be efficient to drop the whole index database rather than deleting
-	// entries. However, if there is more than more than 1 channel, dropping of
+	// entries. However, if there is more than 1 channel, dropping of
 	// index would impact the time taken to recover the peer. We need to analyze
 	// a bit before making a decision on rollback vs drop of index. FAB-15672
 	r.reusableBatch.Reset()
@@ -201,7 +201,7 @@ func (r *rollbackMgr) rollbackBlockFiles() error {
 
 	filePath := deriveBlockfilePath(r.ledgerDir, targetFileNum)
 	if err := os.Truncate(filePath, endOffset); err != nil {
-		return errors.Wrapf(err, "error trucating the block file [%s]", filePath)
+		return errors.Wrapf(err, "error truncating the block file [%s]", filePath)
 	}
 
 	return nil

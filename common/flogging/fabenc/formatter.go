@@ -23,13 +23,13 @@ import (
 //  2. an optional colon that is ungrouped with '?:'
 //  3. an optional, non-greedy format directive
 //
-// The grouping simplifies the verb proccssing during spec parsing.
+// The grouping simplifies the verb processing during spec parsing.
 var formatRegexp = regexp.MustCompile(`%{(color|id|level|message|module|shortfunc|time)(?::(.*?))?}`)
 
 // ParseFormat parses a log format spec and returns a slice of formatters
 // that should be iterated over to build a formatted log record.
 //
-// The op-loggng specifiers supported by this formatter are:
+// The op-logging specifiers supported by this formatter are:
 //   - %{color} - level specific SGR color escape or SGR reset
 //   - %{id} - a unique log sequence number
 //   - %{level} - the log level of the entry
@@ -118,7 +118,7 @@ func (m *MultiFormatter) SetFormatters(formatters []Formatter) {
 // A StringFormatter formats a fixed string.
 type StringFormatter struct{ Value string }
 
-// Format writes the formatter's fixed string to provided writer.
+// Format writes the formatter's fixed string to the provided writer.
 func (s StringFormatter) Format(w io.Writer, entry zapcore.Entry, fields []zapcore.Field) {
 	fmt.Fprintf(w, "%s", s.Value)
 }
@@ -233,7 +233,7 @@ func (m ModuleFormatter) Format(w io.Writer, entry zapcore.Entry, fields []zapco
 	fmt.Fprintf(w, m.FormatVerb, entry.LoggerName)
 }
 
-// sequence maintains the global sequence number shared by all SequeneFormatter
+// sequence maintains the global sequence number shared by all SequenceFormatter
 // instances.
 var sequence uint64
 

@@ -57,7 +57,7 @@ type Provider struct {
 
 // DataFormatInfo contains the information about the version of the data format
 type DataFormatInfo struct {
-	FormatVerison string // version of the data format
+	FormatVersion string // version of the data format
 	IsDBEmpty     bool   // set to true if the db does not contain any data
 }
 
@@ -84,7 +84,7 @@ func RetrieveDataFormatInfo(dbPath string) (*DataFormatInfo, error) {
 
 	return &DataFormatInfo{
 		IsDBEmpty:     dbEmpty,
-		FormatVerison: string(formatVersion),
+		FormatVersion: string(formatVersion),
 	}, nil
 }
 
@@ -121,7 +121,7 @@ func openDBAndCheckFormat(conf *Conf) (d *DB, e error) {
 	}
 
 	if dbEmpty && conf.ExpectedFormat != "" {
-		logger.Infof("DB is empty Setting db format as %s", conf.ExpectedFormat)
+		logger.Infof("DB is empty. Setting db format as %s", conf.ExpectedFormat)
 		if err := internalDB.Put(formatVersionKey, []byte(conf.ExpectedFormat), true); err != nil {
 			return nil, err
 		}

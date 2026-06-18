@@ -114,7 +114,7 @@ var _ = Describe("TLS", func() {
 		})
 	})
 
-	Context("the client CA slice is empty", func() {
+	Context("when the client CA slice is empty", func() {
 		BeforeEach(func() {
 			httpTLS.ClientCACertFiles = nil
 		})

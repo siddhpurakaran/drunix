@@ -139,7 +139,7 @@ const (
 // recordHeightIfGreaterThanPreviousRecording creates a file "__preResetHeight" in the ledger's
 // directory. This file contains human readable string for the current block height. This function
 // only overwrites this information if the current block height is higher than the one recorded in
-// the existing file (if present). This helps in achieving fail-safe behviour of reset utility
+// the existing file (if present). This helps in achieving fail-safe behaviour of reset utility
 func recordHeightIfGreaterThanPreviousRecording(ledgerDir string) error {
 	logger.Infof("Preparing to record current height for ledger at [%s]", ledgerDir)
 	blkfilesInfo, err := constructBlockfilesInfo(ledgerDir)
@@ -153,19 +153,19 @@ func recordHeightIfGreaterThanPreviousRecording(ledgerDir string) error {
 	if err != nil {
 		return err
 	}
-	previuoslyRecordedHt := uint64(0)
+	previouslyRecordedHt := uint64(0)
 	if exists {
 		htBytes, err := ioutil.ReadFile(preResetHtFile)
 		if err != nil {
 			return err
 		}
-		if previuoslyRecordedHt, err = strconv.ParseUint(string(htBytes), 10, 64); err != nil {
+		if previouslyRecordedHt, err = strconv.ParseUint(string(htBytes), 10, 64); err != nil {
 			return err
 		}
-		logger.Infof("preResetHtFile contains height = %d", previuoslyRecordedHt)
+		logger.Infof("preResetHtFile contains height = %d", previouslyRecordedHt)
 	}
 	currentHt := blkfilesInfo.lastPersistedBlock + 1
-	if currentHt > previuoslyRecordedHt {
+	if currentHt > previouslyRecordedHt {
 		logger.Infof("Recording current height [%d]", currentHt)
 		return ioutil.WriteFile(preResetHtFile,
 			[]byte(strconv.FormatUint(currentHt, 10)),
@@ -173,7 +173,7 @@ func recordHeightIfGreaterThanPreviousRecording(ledgerDir string) error {
 		)
 	}
 	logger.Infof("Not recording current height [%d] since this is less than previously recorded height [%d]",
-		currentHt, previuoslyRecordedHt)
+		currentHt, previouslyRecordedHt)
 
 	return nil
 }
@@ -192,11 +192,11 @@ func LoadPreResetHeight(blockStorageDir string, ledgerIDs []string) (map[string]
 		if err != nil {
 			return nil, err
 		}
-		previuoslyRecordedHt, err := strconv.ParseUint(string(bytes), 10, 64)
+		previouslyRecordedHt, err := strconv.ParseUint(string(bytes), 10, 64)
 		if err != nil {
 			return nil, err
 		}
-		m[ledgerID] = previuoslyRecordedHt
+		m[ledgerID] = previouslyRecordedHt
 	}
 	if len(m) > 0 {
 		logger.Infof("Pre-reset heights loaded: %v", m)

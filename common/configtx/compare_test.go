@@ -305,7 +305,7 @@ func TestCompareConfigGroup(t *testing.T) {
 			Values:    map[string]*cb.ConfigValue{"Foo2": nil},
 			Policies:  map[string]*cb.ConfigPolicy{"Foo3": nil, "Bar3": nil},
 		},
-	}), "Should have detected fifferent values entries")
+	}), "Should have detected different values entries")
 
 	// Different policies
 	require.False(t, comparable{
@@ -324,5 +324,5 @@ func TestCompareConfigGroup(t *testing.T) {
 			Values:    map[string]*cb.ConfigValue{"Foo2": nil, "Bar2": nil},
 			Policies:  map[string]*cb.ConfigPolicy{"Foo3": nil, "Bar4": nil},
 		},
-	}), "Should have detected fifferent policies entries")
+	}), "Should have detected different policies entries")
 }

@@ -248,7 +248,7 @@ var _ = Describe("Provider", func() {
 			})
 		})
 
-		Context("when label values are not specified in counter options", func() {
+		Context("when label values are not specified in histogram options", func() {
 			BeforeEach(func() {
 				histogramOpts.LabelNames = nil
 				histogramOpts.StatsdFormat = "%{#namespace}.%{#subsystem}.%{#name}"

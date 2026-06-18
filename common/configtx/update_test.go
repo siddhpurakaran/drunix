@@ -104,7 +104,7 @@ func TestVerifyDeltaSet(t *testing.T) {
 		require.Error(t, vi.verifyDeltaSet(deltaSet, nil), "New key not at version 0")
 	})
 
-	t.Run("Policy evalaution to false", func(t *testing.T) {
+	t.Run("Policy evaluation to false", func(t *testing.T) {
 		deltaSet := make(map[string]comparable)
 
 		deltaSet["foo"] = comparable{ConfigValue: &cb.ConfigValue{Version: 1, ModPolicy: "foo"}}

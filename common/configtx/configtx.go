@@ -16,7 +16,7 @@ type Validator interface {
 	// Validate attempts to apply a configtx to become the new config
 	Validate(configEnv *cb.ConfigEnvelope) error
 
-	// Validate attempts to validate a new configtx against the current config state
+	// ProposeConfigUpdate attempts to validate a new configtx against the current config state
 	ProposeConfigUpdate(configtx *cb.Envelope) (*cb.ConfigEnvelope, error)
 
 	// ChannelID retrieves the channel ID associated with this manager

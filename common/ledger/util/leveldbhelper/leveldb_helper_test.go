@@ -34,7 +34,7 @@ func TestLevelDBHelperReadWithoutOpen(t *testing.T) {
 	db := env.db
 	defer func() {
 		if recover() == nil {
-			t.Fatalf("A panic is expected when writing to db before opening")
+			t.Fatalf("A panic is expected when reading from db before opening")
 		}
 	}()
 	_, err := db.Get([]byte("key"))

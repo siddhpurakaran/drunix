@@ -106,7 +106,7 @@ func TestRollback(t *testing.T) {
 }
 
 // TestRollbackWithOnlyBlockIndexAttributes mimics the scenario when ledger is used for orderer
-// i.e., only block is index and transancations are not indexed
+// i.e., only block is indexed and transactions are not indexed
 func TestRollbackWithOnlyBlockIndexAttributes(t *testing.T) {
 	path := testPath()
 	blocks := testutil.ConstructTestBlocks(t, 50) // 50 blocks persisted in ~5 block files
