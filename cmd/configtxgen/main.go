@@ -318,7 +318,7 @@ func main() {
 
 	if outputAnchorPeersUpdate != "" {
 		if err := doOutputAnchorPeersUpdate(profileConfig, channelID, outputAnchorPeersUpdate, asOrg); err != nil {
-			logger.Fatalf("Error on inspectChannelCreateTx: %s", err)
+			logger.Fatalf("Error on outputAnchorPeersUpdate: %s", err)
 		}
 	}
 

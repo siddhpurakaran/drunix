@@ -73,7 +73,7 @@ func main() {
 		defer (*protoEncodeDest).Close()
 		err := encodeProto(*protoEncodeType, *protoEncodeSource, *protoEncodeDest)
 		if err != nil {
-			app.Fatalf("Error decoding: %s", err)
+			app.Fatalf("Error encoding: %s", err)
 		}
 	case protoDecode.FullCommand():
 		defer (*protoDecodeSource).Close()

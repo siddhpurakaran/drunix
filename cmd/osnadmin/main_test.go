@@ -442,7 +442,7 @@ var _ = Describe("osnadmin", func() {
 				blockPath = createBlockFile(tempDir, block)
 			})
 
-			It("returns 405 bad request", func() {
+			It("returns 400 bad request", func() {
 				args := []string{
 					"channel",
 					"join",
@@ -622,7 +622,7 @@ var _ = Describe("osnadmin", func() {
 			})
 		})
 
-		Context("when the client cert/key pair fail to load", func() {
+		Context("when the client cert/key pair fails to load", func() {
 			BeforeEach(func() {
 				clientKey = "brussel-sprouts"
 			})
@@ -677,7 +677,7 @@ var _ = Describe("osnadmin", func() {
 			ordererCACert = filepath.Join(tempDir, "server-ca+intermediate-ca.pem")
 		})
 
-		It("uses the channel participation API to list all application and and the system channel (when it exists)", func() {
+		It("uses the channel participation API to list all application channels and the system channel (when it exists)", func() {
 			args := []string{
 				"channel",
 				"list",
