@@ -168,7 +168,7 @@ type ChannelPolicyManagerGetter interface {
 	Manager(channelID string) Manager
 }
 
-// PolicyManagerGetterFunc is a function adapater for ChannelPolicyManagerGetter.
+// PolicyManagerGetterFunc is a function adapter for ChannelPolicyManagerGetter.
 type PolicyManagerGetterFunc func(channelID string) Manager
 
 func (p PolicyManagerGetterFunc) Manager(channelID string) Manager { return p(channelID) }
@@ -186,7 +186,7 @@ func NewManagerImpl(path string, providers map[int32]Provider, root *cb.ConfigGr
 	var err error
 	_, ok := providers[int32(cb.Policy_IMPLICIT_META)]
 	if ok {
-		logger.Panicf("ImplicitMetaPolicy type must be provider by the policy manager")
+		logger.Panicf("ImplicitMetaPolicy type must be provided by the policy manager")
 	}
 
 	managers := make(map[string]*ManagerImpl)

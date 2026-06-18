@@ -36,7 +36,7 @@ func TestComputeSHA3256(t *testing.T) {
 		t.Fatalf("Expected hashes to match, but they did not match")
 	}
 	if bytes.Equal(ComputeSHA3256([]byte("foobar1")), ComputeSHA3256([]byte("foobar2"))) {
-		t.Fatalf("Expected hashed to be different, but they match")
+		t.Fatalf("Expected hashes to be different, but they match")
 	}
 }
 

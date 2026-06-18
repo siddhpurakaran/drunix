@@ -113,7 +113,7 @@ func copyFile(srcpath, destpath string) error {
 
 // Unzip will decompress the src zip file to the dest directory.
 // If createTopLevelDirInZip is true, it creates the top level dir when unzipped.
-// Otherwise, it trims off the top level dir when unzipped. For example, ledersData/historydb/abc will become historydb/abc.
+// Otherwise, it trims off the top level dir when unzipped. For example, ledgersData/historydb/abc will become historydb/abc.
 func Unzip(src string, dest string, createTopLevelDirInZip bool) error {
 	r, err := zip.OpenReader(src)
 	if err != nil {

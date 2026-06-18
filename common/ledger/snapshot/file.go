@@ -64,7 +64,7 @@ func (c *FileWriter) EncodeString(str string) error {
 	return c.EncodeBytes([]byte(str))
 }
 
-// EncodeString encodes and appends a proto message to the data stream
+// EncodeProtoMessage encodes and appends a proto message to the data stream
 func (c *FileWriter) EncodeProtoMessage(m proto.Message) error {
 	b, err := proto.Marshal(m)
 	if err != nil {
@@ -120,7 +120,7 @@ func (c *FileWriter) Close() error {
 // during bootstrapping a channel from snapshot. The data should be read, using the functions `DecodeXXX`,
 // in the same sequence in which the data was written by the functions `EncodeXXX` in the `FileCreator`.
 // Note that the FileReader does not verify the hash of stream and it is expected that the hash has been verified
-// by the consumer. Later, if we decide to perform this, on-the-side, while loading the snapshot data, the FileRedear,
+// by the consumer. Later, if we decide to perform this, on-the-side, while loading the snapshot data, the FileReader,
 // like the FileCreator, would take a `hasher` as an input
 type FileReader struct {
 	file              *os.File

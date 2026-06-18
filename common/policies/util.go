@@ -20,13 +20,13 @@ type ConfigPolicy interface {
 	Value() *cb.Policy
 }
 
-// StandardConfigValue implements the ConfigValue interface.
+// StandardConfigPolicy implements the ConfigPolicy interface.
 type StandardConfigPolicy struct {
 	key   string
 	value *cb.Policy
 }
 
-// Key is the key this value should be stored in the *cb.ConfigGroup.Values map.
+// Key is the key this value should be stored in the *cb.ConfigGroup.Policies map.
 func (scv *StandardConfigPolicy) Key() string {
 	return scv.key
 }

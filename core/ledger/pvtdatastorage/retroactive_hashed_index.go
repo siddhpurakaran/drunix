@@ -29,18 +29,18 @@ func CheckAndConstructHashedIndex(storePath string, ledgerIDs []string) error {
 		return err
 	}
 
-	if info.IsDBEmpty || info.FormatVerison == currentDataVersion {
+	if info.IsDBEmpty || info.FormatVersion == currentDataVersion {
 		return nil
 	}
 
-	if info.FormatVerison == previousDataVersion {
+	if info.FormatVersion == previousDataVersion {
 		if err := constructHashedIndex(storePath, ledgerIDs); err != nil {
 			return err
 		}
 		return nil
 	}
 
-	return errors.Errorf("unexpected data version - cannot upgrade data format for pvtdatastore from %s to %s", info.FormatVerison, currentDataVersion)
+	return errors.Errorf("unexpected data version - cannot upgrade data format for pvtdatastore from %s to %s", info.FormatVersion, currentDataVersion)
 }
 
 // constructHashedIndex creates the HashedIndex entries for the private data keys and at the end sets the

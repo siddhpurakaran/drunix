@@ -203,7 +203,7 @@ func TestStringFromFile(t *testing.T) {
 	expectedValue := "this is the text in the file"
 
 	err = ioutil.WriteFile(file.Name(), []byte(expectedValue), 0o644)
-	require.NoError(t, err, "uname to write temp file")
+	require.NoError(t, err, "unable to write temp file")
 
 	yaml := fmt.Sprintf("---\nInner:\n  Single:\n    File: %s", file.Name())
 
@@ -294,7 +294,7 @@ func TestStringFromFileNotSpecified(t *testing.T) {
 
 	var uconf stringFromFileConfig
 	err = config.EnhancedExactUnmarshal(&uconf)
-	require.Error(t, err, "umarshal should fail")
+	require.Error(t, err, "unmarshal should fail")
 }
 
 func TestStringFromFileEnv(t *testing.T) {

@@ -67,7 +67,7 @@ type Channel interface {
 	// Merkle tree to compute the BlockData hash
 	BlockDataHashingStructureWidth() uint32
 
-	// OrdererAddresses returns the list of valid orderer addresses to connect to to invoke Broadcast/Deliver
+	// OrdererAddresses returns the list of valid orderer addresses to connect to when invoking Broadcast/Deliver
 	OrdererAddresses() []string
 
 	// Capabilities defines the capabilities for a channel
@@ -146,7 +146,7 @@ type ApplicationCapabilities interface {
 	// in the same block or whether we mark the second one as TxValidationCode_DUPLICATE_TXID
 	ForbidDuplicateTXIdInBlock() bool
 
-	// ACLs returns true is ACLs may be specified in the Application portion of the config tree
+	// ACLs returns true if ACLs may be specified in the Application portion of the config tree
 	ACLs() bool
 
 	// PrivateChannelData returns true if support for private channel data (a.k.a. collections) is enabled.
@@ -158,11 +158,11 @@ type ApplicationCapabilities interface {
 	// existing collection or add new collections through chaincode upgrade (as introduced in v1.2)
 	CollectionUpgrade() bool
 
-	// V1_1Validation returns true is this channel is configured to perform stricter validation
+	// V1_1Validation returns true if this channel is configured to perform stricter validation
 	// of transactions (as introduced in v1.1).
 	V1_1Validation() bool
 
-	// V1_2Validation returns true is this channel is configured to perform stricter validation
+	// V1_2Validation returns true if this channel is configured to perform stricter validation
 	// of transactions (as introduced in v1.2).
 	V1_2Validation() bool
 

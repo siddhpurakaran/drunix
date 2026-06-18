@@ -240,10 +240,10 @@ func TestBadStringsNoPanic(t *testing.T) {
 	_, err := FromString("OR('A.member', Bmember)") // error after 1st Evaluate()
 	require.EqualError(t, err, "unrecognized token 'Bmember' in policy string")
 
-	_, err = FromString("OR('A.member', 'Bmember')") // error after 2nd Evalute()
+	_, err = FromString("OR('A.member', 'Bmember')") // error after 2nd Evaluate()
 	require.EqualError(t, err, "unrecognized token 'Bmember' in policy string")
 
-	_, err = FromString(`OR('A.member', '\'Bmember\'')`) // error after 3rd Evalute()
+	_, err = FromString(`OR('A.member', '\'Bmember\'')`) // error after 3rd Evaluate()
 	require.EqualError(t, err, "unrecognized token 'Bmember' in policy string")
 }
 
@@ -316,11 +316,11 @@ func TestOutOfErrorCase(t *testing.T) {
 	require.Nil(t, p2)
 	require.EqualError(t, err2, "expected at least two arguments to NOutOf. Given 1")
 
-	p3, err3 := FromString("OutOf(true, 'A.member')") // outof() }else{. 1st arg is non of float, int, string
+	p3, err3 := FromString("OutOf(true, 'A.member')") // outof() }else{. 1st arg is none of float, int, string
 	require.Nil(t, p3)
 	require.EqualError(t, err3, "unexpected type bool")
 
-	p4, err4 := FromString("OutOf(1, 2)") // oufof() switch default. 2nd arg is not string.
+	p4, err4 := FromString("OutOf(1, 2)") // outof() switch default. 2nd arg is not string.
 	require.Nil(t, p4)
 	require.EqualError(t, err4, "unexpected type float64")
 
@@ -346,17 +346,17 @@ func TestOutOfErrorCase(t *testing.T) {
 }
 
 func TestBadStringBeforeFAB11404_ThisCanDeleteAfterFAB11404HasMerged(t *testing.T) {
-	s1 := "1" // ineger in string
+	s1 := "1" // integer in string
 	p1, err1 := FromString(s1)
 	require.Nil(t, p1)
 	require.EqualError(t, err1, `invalid policy string '1'`)
 
-	s2 := "'1'" // quoted ineger in string
+	s2 := "'1'" // quoted integer in string
 	p2, err2 := FromString(s2)
 	require.Nil(t, p2)
 	require.EqualError(t, err2, `invalid policy string ''1''`)
 
-	s3 := `'\'1\''` // nested quoted ineger in string
+	s3 := `'\'1\''` // nested quoted integer in string
 	p3, err3 := FromString(s3)
 	require.Nil(t, p3)
 	require.EqualError(t, err3, `invalid policy string ''\'1\'''`)

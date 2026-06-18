@@ -130,7 +130,7 @@ func TestSatisfiedByEmptyPolicy(t *testing.T) {
 	require.Nil(t, ip.SatisfiedBy())
 
 	require.Equal(t, map[string]struct{}{
-		"Malformed policy, it is either not composed of signature policy envelopes or is missing some": {},
+		"Malformed policy, it is either not composed of signature policy envelopes or is missing some envelopes": {},
 	}, logged)
 }
 

@@ -112,7 +112,7 @@ func (ocStore *OrgChainStore) Height() uint64 {
 
 // RetrieveBlockByNumber returns the block for the given block number
 func (ocStore *OrgChainStore) RetrieveBlockByNumber(blockNumber uint64) (*cb.Block, error) {
-	return retriveOrgBlockByNum(blockNumber, ocStore.store, ocStore.fatBlockChainReader,
+	return retrieveOrgBlockByNum(blockNumber, ocStore.store, ocStore.fatBlockChainReader,
 		ocStore.sparseBlockReadWriter, ocStore.mspId, ocStore.channelId, ocStore.ordererSavePoint)
 }
 
@@ -190,7 +190,7 @@ func (oci *orgCacheIterator) Next() (*cb.Block, cb.Status) {
 	return block, cb.Status_SUCCESS
 }
 
-func searchAndRetreiveFatBlockMerkleInfo(orgblockNumber uint64, orgId, channelId string, sparseMetadataReadWriter blockledger.SparseMetadataReadWriter) (FatBlockMerkleInfoProto, uint64, error) {
+func searchAndRetrieveFatBlockMerkleInfo(orgblockNumber uint64, orgId, channelId string, sparseMetadataReadWriter blockledger.SparseMetadataReadWriter) (FatBlockMerkleInfoProto, uint64, error) {
 
 	fatBlockNumberBytes, err := sparseMetadataReadWriter.GetOrgMetaValue([]byte(fmt.Sprintf("%v.%v.%v", channelId, orgId, orgblockNumber)))
 	if err != nil || fatBlockNumberBytes == nil {
@@ -215,7 +215,7 @@ func searchAndRetreiveFatBlockMerkleInfo(orgblockNumber uint64, orgId, channelId
 }
 
 // Retrieves an orgBlock by block number, checking cache first and assembling block if not found
-func retriveOrgBlockByNum(blockNum uint64, store *fastcache.Cache, fatBlockReader blockledger.Reader,
+func retrieveOrgBlockByNum(blockNum uint64, store *fastcache.Cache, fatBlockReader blockledger.Reader,
 	sparseMetadataReadWriter blockledger.SparseMetadataReadWriter, orgId string, channelId string, ordererSavepoint uint64) (*cb.Block, error) {
 	blockNumberBytes := make([]byte, 8)
 	binary.BigEndian.PutUint64(blockNumberBytes, blockNum)
@@ -246,7 +246,7 @@ func retriveOrgBlockByNum(blockNum uint64, store *fastcache.Cache, fatBlockReade
 	}
 
 	// ***********************************************
-	fatBlockMerkleInfo, fatBlockNumber, err := searchAndRetreiveFatBlockMerkleInfo(blockNum, orgId, channelId, sparseMetadataReadWriter)
+	fatBlockMerkleInfo, fatBlockNumber, err := searchAndRetrieveFatBlockMerkleInfo(blockNum, orgId, channelId, sparseMetadataReadWriter)
 	if err != nil {
 		return nil, err
 	}

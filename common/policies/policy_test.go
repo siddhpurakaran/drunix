@@ -154,7 +154,7 @@ func TestNestedManager(t *testing.T) {
 		for i, abs := range []Manager{n1, m} {
 			absName := absPrefix + relPathFromBase
 			_, ok = abs.GetPolicy(absName)
-			require.True(t, ok, "Should have found absolutely policy for manager %d", i)
+			require.True(t, ok, "Should have found absolute policy for manager %d", i)
 		}
 	}
 
@@ -173,7 +173,7 @@ func TestNestedManager(t *testing.T) {
 		for i, abs := range []Manager{n2a, n1, m} {
 			absName := absPrefix + relPathFromBase
 			_, ok = abs.GetPolicy(absName)
-			require.True(t, ok, "Should have found absolutely policy for manager %d", i)
+			require.True(t, ok, "Should have found absolute policy for manager %d", i)
 		}
 	}
 
@@ -192,7 +192,7 @@ func TestNestedManager(t *testing.T) {
 		for i, abs := range []Manager{n2b, n1, m} {
 			absName := absPrefix + relPathFromBase
 			_, ok = abs.GetPolicy(absName)
-			require.True(t, ok, "Should have found absolutely policy for manager %d", i)
+			require.True(t, ok, "Should have found absolute policy for manager %d", i)
 		}
 	}
 }

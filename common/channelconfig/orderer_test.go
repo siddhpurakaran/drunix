@@ -28,7 +28,7 @@ func TestBatchSize(t *testing.T) {
 	require.Error(t, oc.validateBatchSize(), "AbsoluteMaxBytes was zero")
 
 	oc = &OrdererConfig{protos: &OrdererProtos{BatchSize: &ab.BatchSize{MaxMessageCount: validMaxMessageCount, AbsoluteMaxBytes: validAbsoluteMaxBytes, PreferredMaxBytes: validAbsoluteMaxBytes + 1}}}
-	require.Error(t, oc.validateBatchSize(), "PreferredMaxBytes larger to AbsoluteMaxBytes")
+	require.Error(t, oc.validateBatchSize(), "PreferredMaxBytes larger than AbsoluteMaxBytes")
 }
 
 func TestBatchTimeout(t *testing.T) {

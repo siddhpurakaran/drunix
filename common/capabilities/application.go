@@ -34,7 +34,7 @@ const (
 	// ApplicationPvtDataExperimental is the capabilities string for private data using the experimental feature of collections/sideDB.
 	ApplicationPvtDataExperimental = "V1_1_PVTDATA_EXPERIMENTAL"
 
-	// ApplicationResourcesTreeExperimental is the capabilities string for private data using the experimental feature of collections/sideDB.
+	// ApplicationResourcesTreeExperimental is the capabilities string for the resources tree experimental feature.
 	ApplicationResourcesTreeExperimental = "V1_1_RESOURCETREE_EXPERIMENTAL"
 
 	// Drunix:: LeanFormatEnabled is the capabilities string for type of txn format to be endorsed
@@ -98,7 +98,7 @@ func (ap ApplicationProvider) CollectionUpgrade() bool {
 	return ap.v12 || ap.v13 || ap.v142 || ap.v20 || ap.v25
 }
 
-// V1_1Validation returns true is this channel is configured to perform stricter validation
+// V1_1Validation returns true if this channel is configured to perform stricter validation
 // of transactions (as introduced in v1.1).
 func (ap *ApplicationProvider) V1_1Validation() bool {
 	return ap.v11 || ap.v12 || ap.v13 || ap.v142 || ap.v20 || ap.v25

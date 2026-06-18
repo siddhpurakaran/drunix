@@ -213,7 +213,6 @@ func (h *Handler) deliverBlocks(ctx context.Context, srv *Server, envelope *cb.E
 		return cb.Status_BAD_REQUEST, nil
 	}
 	// orgId of the requester
-	// orgId of the requester
 	orgId := id.GetMspid()
 	// This check takes care of the scenario when
 	// one orderer asks from other orderer

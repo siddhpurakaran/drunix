@@ -641,7 +641,7 @@ type BlockCreator struct {
 
 var blockCreators = map[string]*BlockCreator{}
 
-// retrieveTxnListForOrgBlock accumulates envelopes in enevelopeList by iterating over the block
+// retrieveTxnListForOrgBlock accumulates envelopes in envelopeList by iterating over the block
 func retrieveTxnListForOrgBlock(blk *cb.Block, txnIdxList []uint64) [][]byte {
 	envelopeList := make([][]byte, 0)
 	for _, txnIdx := range txnIdxList {
@@ -661,7 +661,7 @@ func assembleOrgBlock(fatblockMerkleInfo FatBlockMerkleInfoProto, orgId string, 
 	orgBlockDetails := fatblockMerkleInfo.OrgHashMap[orgId]
 	fatBlock, err := fatBlockChainReader.RetrieveBlockByNumber(fatBlockNum)
 	if err != nil {
-		logger.Panicf("error while retreiving block by number :%v", err)
+		logger.Panicf("error while retrieving block by number :%v", err)
 	}
 	txnEnvelopeByteList := retrieveTxnListForOrgBlock(fatBlock, orgBlockDetails.TxnIndexList)
 	data := &cb.BlockData{}

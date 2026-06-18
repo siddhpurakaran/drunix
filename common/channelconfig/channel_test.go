@@ -73,7 +73,7 @@ func TestOrdererAddresses(t *testing.T) {
 	require.Error(t, cc.validateOrdererAddresses(), "Must supply orderer addresses")
 
 	cc = &ChannelConfig{protos: &ChannelProtos{OrdererAddresses: &cb.OrdererAddresses{Addresses: []string{"127.0.0.1:7050"}}}}
-	require.NoError(t, cc.validateOrdererAddresses(), "Invalid orderer address supplied")
+	require.NoError(t, cc.validateOrdererAddresses(), "Valid orderer address accepted")
 
 	require.Equal(t, "127.0.0.1:7050", cc.OrdererAddresses()[0], "Unexpected orderer address returned")
 }

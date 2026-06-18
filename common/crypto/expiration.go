@@ -41,7 +41,7 @@ func certExpirationTime(pemBytes []byte) time.Time {
 	return cert.NotAfter
 }
 
-// MessageFunc notifies a message happened with the given format, and can be replaced with Warnf or Infof of a logger.
+// MessageFunc notifies that a message happened with the given format, and can be replaced with Warnf or Infof of a logger.
 type MessageFunc func(format string, args ...interface{})
 
 // Scheduler invokes f after d time, and can be replaced with time.AfterFunc.
@@ -132,7 +132,7 @@ func CertificatesWithSamePublicKey(der1, der2 []byte) error {
 	return ErrPubKeyMismatch
 }
 
-// publicKeyFromCertificate returns the public key of the given ASN1 DER certificate.
+// publicKeyFromCertificate returns the public key of the given ASN.1 DER certificate.
 func publicKeyFromCertificate(der []byte) ([]byte, error) {
 	cert, err := x509.ParseCertificate(der)
 	if err != nil {

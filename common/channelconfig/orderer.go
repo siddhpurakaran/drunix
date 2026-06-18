@@ -40,7 +40,7 @@ const (
 	// KafkaBrokersKey is the cb.ConfigItem type key name for the KafkaBrokers message.
 	KafkaBrokersKey = "KafkaBrokers"
 
-	// EndpointsKey is the cb.COnfigValue key name for the Endpoints message in the OrdererOrgGroup.
+	// EndpointsKey is the cb.ConfigValue key name for the Endpoints message in the OrdererOrgGroup.
 	EndpointsKey = "Endpoints"
 )
 

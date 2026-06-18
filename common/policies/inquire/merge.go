@@ -23,12 +23,12 @@ func (cps ComparablePrincipalSets) ToPrincipalSets() policies.PrincipalSets {
 }
 
 // Merge returns ComparablePrincipalSets that the underlying PrincipalSets consist of
-// PrincipalSets that satisfy the endorsement policies that both ComparablePrincipalSets were derived of.
+// PrincipalSets that satisfy the endorsement policies that both ComparablePrincipalSets were derived from.
 // More formally speaking, let EP1 and EP2 be endorsement policies, and
 // P1 and P2 be the principal sets that each principal set p in P1 satisfies EP1,
 // and each principal set p in P2 satisfies EP2.
 // Denote as S1 and S2 the ComparablePrincipalSets derived from EP1 and EP2 respectively.
-// Then, S = Merge(S1, S2) wields ComparablePrincipalSets
+// Then, S = Merge(S1, S2) yields ComparablePrincipalSets
 // such that every ComparablePrincipalSet s in S, satisfies both EP1 and EP2.
 func Merge(s1, s2 ComparablePrincipalSets) ComparablePrincipalSets {
 	var res ComparablePrincipalSets
@@ -41,7 +41,7 @@ func Merge(s1, s2 ComparablePrincipalSets) ComparablePrincipalSets {
 	setsIn2ThatAreIn1 := s2.OfMapping(setsIn2ToTheContainingSetsIn1, s1)
 	s2 = s2.ExcludeIndices(setsIn2ToTheContainingSetsIn1)
 
-	// In the interim, the result contains sets from either the first of the second
+	// In the interim, the result contains sets from either the first or the second
 	// set, that also contain some other set(s) in the other set
 	res = append(res, setsIn1ThatAreIn2.ToMergedPrincipalSets()...)
 	res = append(res, setsIn2ThatAreIn1.ToMergedPrincipalSets()...)
@@ -139,7 +139,7 @@ func (pairs comparablePrincipalSetPairs) ToMergedPrincipalSets() ComparablePrinc
 	return res
 }
 
-// OfMapping returns comparablePrincipalSetPairs comprising only of the indices found in the given keys
+// OfMapping returns comparablePrincipalSetPairs comprising only the indices found in the given keys
 func (cps ComparablePrincipalSets) OfMapping(mapping map[int][]int, sets2 ComparablePrincipalSets) comparablePrincipalSetPairs {
 	var res []comparablePrincipalSetPair
 	for i, js := range mapping {

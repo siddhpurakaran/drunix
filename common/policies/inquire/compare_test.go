@@ -135,11 +135,11 @@ func TestIsA(t *testing.T) {
 	})
 
 	t.Run("An OU member is also a member", func(t *testing.T) {
-		require.True(t, peer1.IsA(member1))
+		require.True(t, ou1.IsA(member1))
 	})
 
 	t.Run("A member isn't an OU member", func(t *testing.T) {
-		require.False(t, member1.IsA(peer1))
+		require.False(t, member1.IsA(ou1))
 	})
 
 	t.Run("Same OU", func(t *testing.T) {
