@@ -18,7 +18,7 @@ import (
 	"time"
 )
 
-func TestArugments(t *testing.T) {
+func TestArguments(t *testing.T) {
 
 	testCases := map[string]struct {
 		exitCode int
@@ -42,7 +42,7 @@ func TestArugments(t *testing.T) {
 		},
 	}
 
-	// Build ledger binary
+	// Build detect binary
 	gt := NewWithT(t)
 	detectCmd, err := gexec.Build("github.com/npci/drunix/ccaas_builder/cmd/detect")
 	gt.Expect(err).NotTo(HaveOccurred())

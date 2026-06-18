@@ -7,7 +7,7 @@
 set -euo pipefail
 
 # create temporary directory for go.mod and clean it
-# up when the script exists.
+# up when the script exits.
 dep_tempdir="$(mktemp -d "$(basename "$0")"-XXXXX)"
 trap 'rm -rf "$dep_tempdir"' EXIT
 

@@ -71,7 +71,7 @@ func run() error {
 
 	// Process and check the metadata file, then copy to the output location
 	if _, err := os.Stat(metadataFile); err != nil {
-		return errors.WithMessagef(err, "%s not found ", metadataFile)
+		return errors.WithMessagef(err, "%s not found", metadataFile)
 	}
 
 	metadataFileContents, cause := ioutil.ReadFile(metadataFile)
@@ -85,7 +85,7 @@ func run() error {
 	}
 
 	if strings.ToLower(metadata.Type) != "ccaas" {
-		return fmt.Errorf("chaincode type should be ccaas, it is %s", metadata.Type)
+		return fmt.Errorf("chaincode type should be ccaas, but it is %s", metadata.Type)
 	}
 
 	if err := copy.Copy(metadataDir, outputDir); err != nil {
@@ -98,10 +98,10 @@ func run() error {
 		}
 	}
 
-	// Process and update the connections file
+	// Process and update the connection file
 	fileInfo, err := os.Stat(connectionSrcFile)
 	if err != nil {
-		return errors.WithMessagef(err, "%s not found ", connectionSrcFile)
+		return errors.WithMessagef(err, "%s not found", connectionSrcFile)
 	}
 
 	connectionFileContents, err := ioutil.ReadFile(connectionSrcFile)
@@ -140,7 +140,7 @@ func run() error {
 		return fmt.Errorf("Failed to parse the DialTimeout field template: %s", err)
 	}
 
-	// if connection is TLS Enabled, updated with the correct information
+	// if connection has TLS enabled, update with the correct information
 	// no other information is needed for the no-TLS case, so the default can be assumed
 	// to be good
 	if connectionData.TLS {

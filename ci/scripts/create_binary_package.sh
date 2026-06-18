@@ -7,7 +7,7 @@ set -euo pipefail
 make "release/${TARGET}"
 mkdir -p "release/${TARGET}/config"
 
-# cp not move otherwise this breaks your source tree
+# cp, not mv otherwise this breaks your source tree
 cp sampleconfig/*yaml "release/${TARGET}/config"
 
 cd "release/${TARGET}"
@@ -15,7 +15,7 @@ if [ "$TARGET" == "windows-amd64" ]; then
     for FILE in bin/*; do mv $FILE $FILE.exe; done
 fi
 
-# Trim the semrev 'v' from the start of the RELEASE attribute
-VERSION=$(echo $RELEASE | sed -e  's/^v\(.*\)/\1/')
+# Trim the semver 'v' from the start of the RELEASE attribute
+VERSION=$(echo $RELEASE | sed -e 's/^v\(.*\)/\1/')
 
 tar -czvf "hyperledger-fabric-${TARGET}-${VERSION}.tar.gz" bin config builders

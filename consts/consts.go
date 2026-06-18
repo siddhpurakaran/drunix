@@ -1,6 +1,6 @@
 /*
 Copyright National Payments Corporation of India. All Rights Reserved.
- 
+
 SPDX-License-Identifier: Apache-2.0
 */
 
@@ -8,7 +8,7 @@ package consts
 
 /*
 DRUNIX:
-	initialize custom fileds from env
+	initialize custom fields from env
 */
 
 import (
@@ -18,14 +18,14 @@ import (
 )
 
 var (
-	// //endorser batch config params
+	// endorser batch config params
 	ENDORSER_BATCH_INTERVAL       = getIntEnvDefault("CORE_PEER_ENDORSERBATCHINTERVAL", 100)
 	ENDORSER_BATCH_CHANNEL_BUFFER = getIntEnvDefault("CORE_PEER_ENDORSERBATCHCHANNELBUFFER", 2000)
 
-	// //pvt data distribution enable/disable param
+	// pvt data distribution enable/disable param
 	PRIVATEDATA_DESSIMINATION_ENABLED = getBoolEnvDefault("PEER_PRIVATEDATA_DESSIMINATION_ENABLED", true)
 
-	// //store certificates in db so that in payload is light in weight
+	// store certificates in db so that the payload is lightweight
 	CERTINDB = getBoolEnvDefault("PEER_CERT_IN_DB", false)
 
 	MSPID = getEnvDefault("CORE_PEER_LOCALMSPID", "Org1Msp")
